@@ -1,0 +1,22 @@
+.signup_btn {
+  display: inline-block;
+  padding: 8px 20px;
+  border-radius: 20px;
+  margin: 10px;
+  cursor: pointer;
+  border: 2px solid #000020;
+  color: #000020;
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.3s ease-in-out;
+  font-family: "Poppins", sans-serif;
+
+  .isActive {
+    border: 1px solid red;
+    color: white;
+  }
+
+  &:hover {
+  }
+}
