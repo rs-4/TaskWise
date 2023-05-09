@@ -61,7 +61,7 @@ const Admin = () => {
 
   return (
     <div>
-      <NavbarContext></NavbarContext>
+      <NavbarContext token={token}></NavbarContext>
       <div className={styles.container}>
         <div className={styles.createSkill}>
           <input

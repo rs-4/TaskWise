@@ -99,6 +99,9 @@ const Index = () => {
       succesInput("password");
     }
   };
+
+  const statusOptions = ["SAS", "SASU", "SARL", "EURL", "SA"];
+
   return (
     <Signin signup={true}>
       {secondStep === false ? (

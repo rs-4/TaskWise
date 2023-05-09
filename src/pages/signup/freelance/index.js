@@ -38,11 +38,45 @@ const Index = () => {
     },
   });
 
+  const [companyForm, setCompanyForm] = useState({
+    address: {
+      street: "",
+      city: "",
+      zipCode: "",
+    },
+    name: "",
+    siret: "",
+    status: "",
+  });
+
   const { fetchData, data, error, loading } = useFetch({
     url: "/auth/register",
     method: "POST",
     body: userForm,
     token: null,
+  });
+
+  const {
+    fetchData: Login,
+    data: loginData,
+    error: loginError,
+    loading: loginLoading,
+  } = useFetch({
+    url: "/auth/login",
+    method: "POST",
+    body: userForm,
+  });
+
+  const {
+    fetchData: freelancerData,
+    data: freelancer,
+    error: freelancerError,
+    loading: freelancerLoading,
+  } = useFetch({
+    url: "/auth/freelance",
+    method: "POST",
+    body: userForm,
+    token: data.token,
   });
 
   const handleCheckboxChange = () => {
@@ -70,6 +104,8 @@ const Index = () => {
       console.log("fetch");
       setSecondStep(true);
       fetchData();
+      Login();
+      console.log(loginData);
     }
   }, [validForm]);
 
@@ -104,6 +140,12 @@ const Index = () => {
       }
     }
   };
+
+  const handleCreateCompany = () => {
+    console.log(data);
+    freelancerData();
+  };
+
   return (
     <Signin>
       {secondStep === false ? (
@@ -190,7 +232,79 @@ const Index = () => {
         </div>
       ) : (
         <>
-          <LoadingSpinner isLoad={loading} />
+          <div className={style.Container__SecondZone}>
+            <div className={style.Container__SecondZone__choiceInput}>
+              <div className={style.ok}>
+                <div className={style.Container__SecondZone__name}></div>
+                <InputName
+                  label="Company Name"
+                  type="text"
+                  name="name"
+                  value={companyForm.name}
+                  isRequired={true}
+                  placeholder="Enter your company name"
+                  onChange={(e) => handleChange(e)}
+                />
+                <label>
+                  Status
+                  <select
+                    name="status"
+                    value={userForm.status}
+                    className={style.select}
+                    onChange={(e) => handleChange(e)}
+                    required
+                  >
+                    <option value="">Please choose an option</option>
+                    {statusOptions.map((option) => (
+                      <option key={option} value={option}>
+                        {option}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+                <InputName
+                  label="SIRET"
+                  type="text"
+                  name="siret"
+                  value={companyForm.siret}
+                  isRequired={true}
+                  placeholder="Enter your SIRET"
+                  onChange={(e) => handleChange(e)}
+                />
+                <InputName
+                  label="Street"
+                  type="text"
+                  name="street"
+                  value={companyForm.address.street}
+                  isRequired={true}
+                  placeholder="Enter your street"
+                  onChange={(e) => handleAddressChange(e)}
+                />
+                <InputName
+                  label="City"
+                  type="text"
+                  name="city"
+                  value={companyForm.address.city}
+                  isRequired={true}
+                  placeholder="Enter your city"
+                  onChange={(e) => handleAddressChange(e)}
+                />
+                <InputName
+                  label="Zip Code"
+                  type="text"
+                  name="zipCode"
+                  value={companyForm.address.zipCode}
+                  isRequired={true}
+                  placeholder="Enter your zip code"
+                  onChange={(e) => handleAddressChange(e)}
+                />
+                <ButtonValidate
+                  onClick={handleCreateCompany}
+                  label="Créer mon compte  >"
+                />
+              </div>
+            </div>
+          </div>
         </>
       )}
     </Signin>
