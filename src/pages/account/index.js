@@ -5,9 +5,7 @@ import LoadingSpinner from "@/components/laoder";
 import NavbarContext from "../../context/navbarContext";
 
 const ProfilePage = () => {
-  const [token, setToken] = useState(
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJib2R5Ijp7ImlkIjoiNjQyMmU4ZTdkMzgwNzlmYTZiZjMyNTE5IiwiaXNBZG1pbiI6ZmFsc2UsInVzZXJUeXBlIjoiQ09NUEFOWSJ9LCJpYXQiOjE2ODE4OTk3NTl9.zkGiXqx6hyVwZjdO7RpxvvvqDEL-X1JHesOS-QjkkwE"
-  );
+  const [token, setToken] = useState(localStorage.getItem("token"));
 
   const { fetchData, data, loading, error } = useFetch({
     url: "/user",
@@ -87,7 +85,7 @@ const ProfilePage = () => {
 
   return (
     <>
-      <NavbarContext></NavbarContext>
+      <NavbarContext token={localStorage.getItem("token")} />
       <div className={styles.wrapper}>
         <form className={styles.form} onSubmit={handleSubmit}>
           <label htmlFor="firstName">First Name:</label>
@@ -154,7 +152,6 @@ const ProfilePage = () => {
           />
 
           <label htmlFor="userType">
-            User Type:{" "}
             <div
               type="text"
               id="userType"

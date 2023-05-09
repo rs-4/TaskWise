@@ -11,6 +11,7 @@ import useFetch from "@/hooks/useFetch";
 import { useRouter } from "next/router";
 import { useContext } from "react";
 import UserContext from "@/context/UserContext";
+import Cookies from "js-cookie";
 
 const Index = () => {
   const router = useRouter();
