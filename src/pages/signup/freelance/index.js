@@ -24,17 +24,17 @@ const Index = () => {
   const [getError, setError] = useState("");
 
   const [userForm, setUserForm] = useState({
-    lastName: "rayan",
-    email: "rayanselmi100@gmail.com",
-    firstName: "rayan",
-    phone: "0400404040",
-    password: "Rayan0602@",
+    lastName: "",
+    email: "",
+    firstName: "",
+    phone: "",
+    password: "",
     userType: "FREELANCE",
-    confirmPassword: "Rayan0602@",
+    confirmPassword: "",
     address: {
-      street: "rue de la paix",
-      city: "paris",
-      zipCode: "75000",
+      street: "",
+      city: "",
+      zipCode: "",
     },
   });
 
@@ -141,11 +141,6 @@ const Index = () => {
     }
   };
 
-  const handleCreateCompany = () => {
-    console.log(data);
-    freelancerData();
-  };
-
   return (
     <Signin>
       {secondStep === false ? (
@@ -231,81 +226,7 @@ const Index = () => {
           </div>
         </div>
       ) : (
-        <>
-          <div className={style.Container__SecondZone}>
-            <div className={style.Container__SecondZone__choiceInput}>
-              <div className={style.ok}>
-                <div className={style.Container__SecondZone__name}></div>
-                <InputName
-                  label="Company Name"
-                  type="text"
-                  name="name"
-                  value={companyForm.name}
-                  isRequired={true}
-                  placeholder="Enter your company name"
-                  onChange={(e) => handleChange(e)}
-                />
-                <label>
-                  Status
-                  <select
-                    name="status"
-                    value={userForm.status}
-                    className={style.select}
-                    onChange={(e) => handleChange(e)}
-                    required
-                  >
-                    <option value="">Please choose an option</option>
-                    {statusOptions.map((option) => (
-                      <option key={option} value={option}>
-                        {option}
-                      </option>
-                    ))}
-                  </select>
-                </label>
-                <InputName
-                  label="SIRET"
-                  type="text"
-                  name="siret"
-                  value={companyForm.siret}
-                  isRequired={true}
-                  placeholder="Enter your SIRET"
-                  onChange={(e) => handleChange(e)}
-                />
-                <InputName
-                  label="Street"
-                  type="text"
-                  name="street"
-                  value={companyForm.address.street}
-                  isRequired={true}
-                  placeholder="Enter your street"
-                  onChange={(e) => handleAddressChange(e)}
-                />
-                <InputName
-                  label="City"
-                  type="text"
-                  name="city"
-                  value={companyForm.address.city}
-                  isRequired={true}
-                  placeholder="Enter your city"
-                  onChange={(e) => handleAddressChange(e)}
-                />
-                <InputName
-                  label="Zip Code"
-                  type="text"
-                  name="zipCode"
-                  value={companyForm.address.zipCode}
-                  isRequired={true}
-                  placeholder="Enter your zip code"
-                  onChange={(e) => handleAddressChange(e)}
-                />
-                <ButtonValidate
-                  onClick={handleCreateCompany}
-                  label="Créer mon compte  >"
-                />
-              </div>
-            </div>
-          </div>
-        </>
+        <></>
       )}
     </Signin>
   );

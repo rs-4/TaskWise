@@ -22,8 +22,8 @@ const Index = () => {
   const [getError, setError] = useState("");
 
   const [userForm, setUserForm] = useState({
-    email: "rayanselmi10@gmail.com",
-    password: "Rayan0602@",
+    email: "",
+    password: "",
   });
 
   const [token, setToken] = useState();

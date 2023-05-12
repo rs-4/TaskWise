@@ -24,17 +24,17 @@ const Index = () => {
   const [getError, setError] = useState("");
 
   const [userForm, setUserForm] = useState({
-    lastName: "rayan",
-    email: "rayanselmi10@gmail.com",
-    firstName: "rayan",
-    phone: "0400404040",
-    password: "Rayan0602@",
+    lastName: "",
+    email: "",
+    firstName: "",
+    phone: "",
+    password: "",
     userType: "COMPANY",
-    confirmPassword: "Rayan0602@",
+    confirmPassword: "",
     address: {
-      street: "rue de la paix",
-      city: "paris",
-      zipCode: "75000",
+      street: "",
+      city: "",
+      zipCode: "",
     },
   });
 
